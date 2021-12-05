@@ -4,7 +4,7 @@ import (
     "fmt"
     "strings"
     "strconv"
-    "adventofcode/2020/modules/readinput"
+    "adventofcode/2021/modules/readinput"
 )
 
 func check(e error) {
