@@ -2,9 +2,7 @@ package main
 
 import (
     "fmt"
-    "strings"
-    "strconv"
-    "adventofcode/2021/modules/readinput"
+    "adventofcode/2021/modules/grid"
 )
 
 func check(e error) {
@@ -14,20 +12,7 @@ func check(e error) {
 }
 
 func main() {
-    lines := readinput.ReadStrings("inputs/11/input.txt", "\n")
-
-    grid := make([][]uint8, len(lines))
-    for row, line := range lines {
-        numbers := strings.Split(line, "")
-        grid[row] = make([]uint8, len(numbers))
-
-        for i:=0; i<len(numbers); i++ {
-            number, err := strconv.Atoi(numbers[i])
-            check(err)
-
-            grid[row][i] = uint8(number)
-        }
-    }
+    grid := grid.Grid("inputs/11/input.txt")
 
     permutations := permutations()
 
@@ -97,19 +82,4 @@ func flash(permutations [][2]int, grid [][]uint8, y int, x int, flashes int) ([]
     }
 
     return grid, flashes
-}
-
-func print_grid(grid [][]uint8) {
-    max_y := len(grid)
-    max_x := len(grid[0])
-
-    for y := 0; y<max_y; y++ {
-        for x := 0; x<max_x; x++ {
-            fmt.Printf("%d ", grid[y][x]);
-        }
-
-        fmt.Printf("\n");
-    }
-
-    fmt.Printf("\n\n\n");
 }
