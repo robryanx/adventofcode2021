@@ -46,3 +46,15 @@ func Print_grid(grid [][]uint8) {
 
     fmt.Printf("\n\n\n");
 }
+
+func Print_grid_part(grid [][]uint8, max_y int, max_x int) {
+    for y := 0; y<max_y; y++ {
+        for x := 0; x<max_x; x++ {
+            fmt.Printf("%d ", grid[y][x]);
+        }
+
+        fmt.Printf("\n");
+    }
+
+    fmt.Printf("\n\n\n");
+}
