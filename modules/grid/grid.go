@@ -32,6 +32,21 @@ func Grid(filename string) [][]uint8 {
 	return grid
 }
 
+func Print_grid_16(grid [][]uint16) {
+    max_y := len(grid)
+    max_x := len(grid[0])
+
+    for y := 0; y<max_y; y++ {
+        for x := 0; x<max_x; x++ {
+            fmt.Printf("%d ", grid[y][x]);
+        }
+
+        fmt.Printf("\n");
+    }
+
+    fmt.Printf("\n\n\n");
+}
+
 func Print_grid(grid [][]uint8) {
     max_y := len(grid)
     max_x := len(grid[0])
