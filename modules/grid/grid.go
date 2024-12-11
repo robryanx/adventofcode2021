@@ -1,16 +1,17 @@
 package grid
 
 import (
-    "fmt"
-    "strings"
-    "strconv"
-    "adventofcode/2021/modules/readinput"
+	"fmt"
+	"strconv"
+	"strings"
+
+	"github.com/robryanx/adventofcode2021/modules/readinput"
 )
 
 func check(e error) {
-    if e != nil {
-        panic(e)
-    }
+	if e != nil {
+		panic(e)
+	}
 }
 
 func Grid(filename string) [][]uint8 {
@@ -18,58 +19,58 @@ func Grid(filename string) [][]uint8 {
 
 	grid := make([][]uint8, len(lines))
 	for row, line := range lines {
-	    numbers := strings.Split(line, "")
-	    grid[row] = make([]uint8, len(numbers))
+		numbers := strings.Split(line, "")
+		grid[row] = make([]uint8, len(numbers))
 
-	    for i:=0; i<len(numbers); i++ {
-	        number, err := strconv.Atoi(numbers[i])
-	        check(err)
+		for i := 0; i < len(numbers); i++ {
+			number, err := strconv.Atoi(numbers[i])
+			check(err)
 
-	        grid[row][i] = uint8(number)
-	    }
+			grid[row][i] = uint8(number)
+		}
 	}
 
 	return grid
 }
 
 func Print_grid_16(grid [][]uint16) {
-    max_y := len(grid)
-    max_x := len(grid[0])
+	max_y := len(grid)
+	max_x := len(grid[0])
 
-    for y := 0; y<max_y; y++ {
-        for x := 0; x<max_x; x++ {
-            fmt.Printf("%d ", grid[y][x]);
-        }
+	for y := 0; y < max_y; y++ {
+		for x := 0; x < max_x; x++ {
+			fmt.Printf("%d ", grid[y][x])
+		}
 
-        fmt.Printf("\n");
-    }
+		fmt.Printf("\n")
+	}
 
-    fmt.Printf("\n\n\n");
+	fmt.Printf("\n\n\n")
 }
 
 func Print_grid(grid [][]uint8) {
-    max_y := len(grid)
-    max_x := len(grid[0])
+	max_y := len(grid)
+	max_x := len(grid[0])
 
-    for y := 0; y<max_y; y++ {
-        for x := 0; x<max_x; x++ {
-            fmt.Printf("%d ", grid[y][x]);
-        }
+	for y := 0; y < max_y; y++ {
+		for x := 0; x < max_x; x++ {
+			fmt.Printf("%d ", grid[y][x])
+		}
 
-        fmt.Printf("\n");
-    }
+		fmt.Printf("\n")
+	}
 
-    fmt.Printf("\n\n\n");
+	fmt.Printf("\n\n\n")
 }
 
 func Print_grid_part(grid [][]uint8, max_y int, max_x int) {
-    for y := 0; y<max_y; y++ {
-        for x := 0; x<max_x; x++ {
-            fmt.Printf("%d ", grid[y][x]);
-        }
+	for y := 0; y < max_y; y++ {
+		for x := 0; x < max_x; x++ {
+			fmt.Printf("%d ", grid[y][x])
+		}
 
-        fmt.Printf("\n");
-    }
+		fmt.Printf("\n")
+	}
 
-    fmt.Printf("\n\n\n");
+	fmt.Printf("\n\n\n")
 }

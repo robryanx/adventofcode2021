@@ -1,50 +1,51 @@
 package main
 
 import (
-    "fmt"
-    "adventofcode/2021/modules/readinput"
+	"fmt"
+
+	"github.com/robryanx/adventofcode2021/modules/readinput"
 )
 
 func main() {
-    positions := readinput.ReadInts("inputs/7/input.txt", ",")
+	positions := readinput.ReadInts("inputs/7/input.txt", ",")
 
-    var max_position int
-    for i:=0; i<len(positions); i++ {
-        if(positions[i] > max_position) {
-            max_position = positions[i]
-        }
-    }
-    
-    var best_run int
-    var best_run_position int
-    var current_run int
+	var max_position int
+	for i := 0; i < len(positions); i++ {
+		if positions[i] > max_position {
+			max_position = positions[i]
+		}
+	}
 
-    for i:=0; i<max_position; i++ {
-        current_run = 0
-        for j:=0; j<len(positions); j++ {
-            var gap int
+	var best_run int
+	var best_run_position int
+	var current_run int
 
-            if positions[j] > i {
-                gap = positions[j] - i
-            } else {
-                gap = i - positions[j]
-            }
+	for i := 0; i < max_position; i++ {
+		current_run = 0
+		for j := 0; j < len(positions); j++ {
+			var gap int
 
-            var gap_total int
-            for k:=0; k<gap; k++ {
-                gap_total += k + 1
-            }
+			if positions[j] > i {
+				gap = positions[j] - i
+			} else {
+				gap = i - positions[j]
+			}
 
-            // triangle numbers
-            current_run += int((gap * (gap + 1)) / 2)
-        }
+			var gap_total int
+			for k := 0; k < gap; k++ {
+				gap_total += k + 1
+			}
 
-        if best_run == 0 || current_run < best_run {
-            best_run = current_run
-            best_run_position = i
-        }
-    }
+			// triangle numbers
+			current_run += int((gap * (gap + 1)) / 2)
+		}
 
-    fmt.Println(best_run)
-    fmt.Println(best_run_position)
+		if best_run == 0 || current_run < best_run {
+			best_run = current_run
+			best_run_position = i
+		}
+	}
+
+	fmt.Println(best_run)
+	fmt.Println(best_run_position)
 }
